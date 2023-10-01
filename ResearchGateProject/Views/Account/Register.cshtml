@@ -1,0 +1,78 @@
+﻿@using ResearchGateProject.Data.ViewModels;
+@model RegisterVM;
+
+@{
+    ViewData["Title"] = "Sign up for a new account";
+}
+
+<div class="row">
+    <div class="col-md-6 offset-3">
+        <p>
+            <h4>Sign up for a new account</h4>
+        </p>
+        @if (TempData["Error"] != null)
+        {
+            <div class="col-md-12 alert alert-danger">
+                <span><b>Sorry!</b> - @TempData["Error"] </span>
+            </div>
+        }
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Register">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"> First Name </label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <!--  ------------------------------------------------------------------------    -->
+
+                    <div class="form-group">
+                        <label asp-for="LastName" class="control-label"> Last Name </label>
+                        <input asp-for="LastName" class="form-control" />
+                        <span asp-validation-for="LastName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Uni" class="control-label"> University </label>
+                        <input asp-for="Uni" class="form-control" />
+                        <span asp-validation-for="Uni" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Dept" class="control-label"> Department </label>
+                        <input asp-for="Dept" class="form-control" />
+                        <span asp-validation-for="Dept" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Mobile" class="control-label"> Mobile </label>
+                        <input asp-for="Mobile" class="form-control" />
+                        <span asp-validation-for="Mobile" class="text-danger"></span>
+                    </div>
+
+                    <!--  ------------------------------------------------------------------------    -->
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"> Email Address </label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"> Password </label>
+                        <input asp-for="Password" class="form-control" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmPassword" class="control-label"> Confirm Password </label>
+                        <input asp-for="ConfirmPassword" class="form-control" />
+                        <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-outline-success float-right" type="submit" value="Sign up" />
+                        <a class="btn btn-outline-secondary" asp-controller="Home" asp-action="Index">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

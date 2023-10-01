@@ -1,0 +1,48 @@
+﻿@using ResearchGateProject.Data.ViewModels;
+@model NewCommentVM;
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div style="width:300px;height: 50px;background-color: rgb(230, 241, 241);border-radius:10px;margin-bottom:10px">
+    <h4 style="font-weight: bold; text-align: center; padding-top: 15px">Post Comment</h4>
+</div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+<div class="form-horizontal alert alert-success" style="background-color: rgb(186, 211, 211); height:330px">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Body, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Body, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Body, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" asp-route-id="model => model.Paper.Id" class="btn btn-outline-success float-right" />
+
+    </div>
+    @*<a class="btn btn-success text-white"
+       asp-controller="Comments"
+       asp-action="Create" asp-route-id="@Model.Id">
+        Add Comment
+    </a>*@
+</div>
+}
+
+<div>
+    <a class="btn btn-outline-primary float-right" asp-action="Index">
+        Back to List
+    </a>
+</div>

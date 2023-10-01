@@ -1,0 +1,76 @@
+﻿@model ApplicationUser
+
+@{
+    ViewData["Title"] = "Update Auther";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>Update Actor</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Edit">
+                    <div class="row">
+                        <div class="col-md-8 offset-2">
+                            <div class="form-group text-center">
+                                <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ProfilePictureURL" class="control-label"></label>
+                                <input asp-for="ProfilePictureURL" class="form-control" />
+                                <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="FirstName" class="control-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="LastName" class="control-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Uni" class="control-label"></label>
+                                <input asp-for="Uni" class="form-control" />
+                                <span asp-validation-for="Uni" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Dept" class="control-label"></label>
+                                <input asp-for="Dept" class="form-control" />
+                                <span asp-validation-for="Dept" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Update" class="btn btn-outline-success float-right" />  
+                        <a class="btn btn-outline-secondary" asp-controller="Auther" asp-action="Details">Back</a>
+                   </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+    <script>
+
+        $(document).ready(function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $("#ProfilePictureURL").val();
+        })
+
+        $("#ProfilePictureURL").on("change", function () {
+            var output = document.getElementById('ProfilePicturePreview');
+            output.src = $(this).val();
+        })
+    </script>
+}

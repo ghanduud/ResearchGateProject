@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResearchGateProject", "ResearchGateProject\ResearchGateProject.csproj", "{ABCE51C0-C33F-451D-9C67-2581594E0B74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABCE51C0-C33F-451D-9C67-2581594E0B74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABCE51C0-C33F-451D-9C67-2581594E0B74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABCE51C0-C33F-451D-9C67-2581594E0B74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABCE51C0-C33F-451D-9C67-2581594E0B74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6DD0C313-A768-4ECA-804B-66D401066FBD}
+	EndGlobalSection
+EndGlobal

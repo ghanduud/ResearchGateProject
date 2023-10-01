@@ -1,0 +1,135 @@
+﻿@model  ResearchGateProject.Data.ViewModels.Paper_comentsVM
+
+@{
+    ViewData["Title"] = "Paper details";
+}
+
+<div class="row">
+    <div class="col-md-8 offset-2">
+        <div class="card mb-12">
+            <div class="row g-0">
+                <div class="col-md-12">
+                    <div class="card-header text-white bg-info">
+                        <p class="card-text">
+                            <h5 class="card-title">
+                                @Model.paper.Title
+                            </h5>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="card-body">
+                        <p class="card-text">@Model.paper.Body</p>
+                        <p class="card-text"><b>Published Date: </b>@Model.paper.CreatedDate.ToString("dd MMM yy")</p>
+                        <p class="card-text">
+                            <b>Authers: </b>
+                            <hr />
+                            <div class="row">
+                                @foreach (var auther in Model.paper.ApplicationUsers_Papers)
+                                {
+                                <div class="column text-center">
+                                    <br />
+                                    <img class="border-info rounded-circle" src="@auther.ApplicationUser.ProfilePictureURL" style="max-width: 90px" />
+                                    <br />
+
+                                    <a asp-controller="Auther" asp-action="ShowAutherInformation" asp-route-id="@auther.ApplicationUserId">@auther.ApplicationUser.FirstName </a>
+
+                                </div>
+
+                                }
+
+                            </div>
+
+
+
+
+
+                    </div>
+                    </p>
+
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="card-footer">
+                    <p class="card-text">
+                        <a class="btn btn-outline-primary float-right" asp-action="Index">
+                            Back to List
+                        </a>
+
+                       @* @Html.ActionLink("add","Create","Comments",new{id = Model.Id} , null)*@
+                        <a class="btn btn-success text-white"
+                           asp-controller="Comments"
+                           asp-action="Create" asp-route-id="@Model.paper.Id">
+                            Add Comment
+                        </a>
+                        @*<a class="btn btn-success text-white "
+                           asp-action="Like" asp-route-id="@Model.paper.Id">
+                            like
+                        </a>*@
+
+                    @using (Html.BeginForm())
+                {
+                            @Html.AntiForgeryToken()
+                   <div >
+
+                             <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.Like.Id)
+
+       
+                        <div class="form-group">
+                           <input type="submit" value="Like" asp-controller="Reaction" asp-action="Like" asp-route-id="@Model.paper.Id" class="btn btn-outline-success float-left" />
+                       </div>
+
+
+
+                   <div class="form-group">             
+                        <input asp-for="@Model.NumbersOfLike" class="form-control float-left col-md-3" readonly />
+                   </div>
+
+                    <div class="form-group">
+                           <input type="submit" value="DisLike" asp-controller="Reaction" asp-action="DisLike" asp-route-id="@Model.paper.Id" class="btn btn-outline-danger float-right" />
+                       </div>
+
+                        <div class="form-group">                     
+                        <input asp-for="@Model.NumbersOfDisLike" class="form-control float-right col-md-3 " readonly />
+                   </div>
+
+                   </div>   
+               }
+                    </p>
+
+                    
+
+
+
+                    <table class="table">
+    <tr>        
+        <th>
+            <h4> Comments </h4>
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.coments) {
+<tr>    
+    <td>
+        @Html.DisplayFor(modelItem => item.Body)
+    </td>
+
+    <td>
+         <a asp-controller="Auther" asp-action="ShowAutherInformation" asp-route-id="@item.ApplicationUserId"> @Model.ApplicationUser.Where(c => c.Id ==item.ApplicationUserId).Select(c => c.FirstName).FirstOrDefault() </a>
+        
+    </td>
+</tr>
+}
+
+</table>
+
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

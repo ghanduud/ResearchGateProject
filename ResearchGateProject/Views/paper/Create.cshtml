@@ -1,0 +1,69 @@
+﻿@model NewPaperVM
+@using ResearchGateProject.ViewModel
+@{
+    ViewData["Title"] = "upload a new Paper";
+}
+
+<div class="row text">
+    <div class="col-md-8 offset-2">
+        <p>
+            <h1>upload a new Paper</h1>
+        </p>
+        <div class="row">
+            <div class="col-md-8 offset-2">
+                <form asp-action="Create" >
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                   @* <div class="form-group text-center">
+                        <img id="CinemaLogoPreview"  class="border-info rounded-circle" style="max-width: 150px" />
+                    </div>*@
+                    
+                    <div class="form-group">
+                        <label asp-for="Title" class="control-label"></label>
+                        <input asp-for="Title" class="form-control" />
+                        <span asp-validation-for="Title" class="text-danger"></span>
+                    </div>
+                  @*
+                    <div class="form-group">
+                        <label asp-for="Body" class="control-label"></label>
+                        <input asp-for="Body" class="form-control" />
+                        <span asp-validation-for="Body" class="text-danger"></span>
+                    </div>*@
+
+                     <div class="form-group">
+                                <label asp-for="CreatedDate" class="control-label"></label>
+                                <input asp-for="CreatedDate" type="date" class="form-control" />
+                                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-12">
+                            <div class="form-group">
+                                <label asp-for="Body" class="control-label"></label>
+                                <textarea asp-for="Body" class="form-control"></textarea>
+                                <span asp-validation-for="Body" class="text-danger"></span>
+                            </div>
+                        </div>
+                                   
+
+                      <div class="form-group">
+                          <input asp-for="ApplicationUserIds" asp-items="ViewBag.ApplicationUsers" name="searchString" type="text" class="form-control" onkeyup="Filter" placeholder="Search for Authers..." title="Type in a name" aria-label="Recipient's username" aria-describedby="button-addon2">                                    
+                                
+                                <label asp-for="ApplicationUserIds" class="control-label"></label>
+                                <select asp-for="ApplicationUserIds" class="form-control"  asp-items="ViewBag.ApplicationUsers" multiple></select>
+                                <span asp-validation-for="ApplicationUserIds" class="text-danger"></span>
+                            </div>
+                     
+                     <div class="col-md-4 offset-4 text-center">
+                        <img width="100%" id="ImageUrlPreview" />
+                    </div>
+
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-outline-success float-right" />
+                      <a class="btn btn-outline-secondary" asp-controller="Auther" asp-action="Details">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
